@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>PENS | Politeknik Elektronika Negeri Surabaya</title>
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+        /* Tema warna biru & kuning */
+        :root {
+            --pens-blue: #0a4b7a;
+            --pens-gold: #ffc107;
+            --pens-darkblue: #043753;
+            --pens-lightblue: #eef5ff;
+        }
+        .bg-pens-blue {
+            background-color: var(--pens-blue) !important;
+        }
+        .bg-pens-gold {
+            background-color: var(--pens-gold) !important;
+        }
+        .text-pens-blue {
+            color: var(--pens-blue) !important;
+        }
+        .text-pens-gold {
+            color: var(--pens-gold) !important;
+        }
+        .btn-pens {
+            background-color: var(--pens-blue);
+            color: white;
+            border-radius: 40px;
+            padding: 8px 24px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-pens:hover {
+            background-color: var(--pens-darkblue);
+            color: #ffc107;
+            transform: translateY(-2px);
+        }
+        .btn-outline-pens {
+            border: 2px solid var(--pens-blue);
+            color: var(--pens-blue);
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .btn-outline-pens:hover {
+            background-color: var(--pens-blue);
+            color: white;
+        }
+        .navbar {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            background-color: white !important;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--pens-blue), #0f5b8c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .navbar-brand span {
+            color: var(--pens-gold);
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+        .nav-link {
+            font-weight: 600;
+            color: #1e2a3e !important;
+            margin: 0 4px;
+            transition: 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--pens-blue) !important;
+            border-bottom: 3px solid var(--pens-gold);
+        }
+        .hero-section {
+            background: linear-gradient(105deg, #f1f9ff 0%, #ffffff 100%);
+            padding: 80px 0 60px;
+            border-bottom: 5px solid var(--pens-gold);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--pens-darkblue);
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--pens-gold);
+            border-radius: 4px;
+        }
+        .table-custom {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .table-custom th {
+            background-color: var(--pens-blue);
+            color: white;
+            font-weight: 600;
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            background-color: rgba(10, 75, 122, 0.05);
+        }
+        .card-gallery {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .card-gallery:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
+        }
+        .gallery-img {
+            height: 220px;
+            object-fit: cover;
+            width: 100%;
+            transition: all 0.4s;
+        }
+        .card-gallery:hover .gallery-img {
+            transform: scale(1.03);
+        }
+        footer {
+            background-color: #043753;
+            color: #e0e7ff;
+        }
+        footer a {
+            color: #ffcd4a;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .social-icons i {
+            font-size: 1.5rem;
+            margin-right: 16px;
+            color: #ffcd4a;
+            transition: 0.2s;
+        }
+        .social-icons i:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+        .table-responsive-sm {
+            border-radius: 20px;
+        }
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--pens-blue);
+        }
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 50px 0 40px;
+            }
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ======================= HEADER + NAVIGASI MENU (5 menu) ======================= -->
+<nav class="navbar navbar-expand-lg bg-white sticky-top py-2">
+    <div class="container">
+        <a class="navbar-brand" href="#home">PENS<span> | Electro</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                <li class="nav-item"><a class="nav-link" href="#program">Program Studi</a></li>
+                <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+                <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========================== HOME (Section Pengantar) ========================== -->
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <h1 class="display-4 fw-bold" style="color: #043753;">Politeknik Elektronika <span class="text-pens-gold">Negeri Surabaya</span></h1>
+                <p class="lead mt-3 text-secondary">Kampus Vokasi unggulan di bidang teknologi elektronika, informatika, dan mekatronika. Menyiapkan talenta digital siap kerja dengan jiwa entrepreneur.</p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#program" class="btn btn-pens"><i class="bi bi-mortarboard"></i> Lihat Program Studi</a>
+                    <a href="#kontak" class="btn btn-outline-pens"><i class="bi bi-envelope"></i> Hubungi Kami</a>
+                </div>
+                <div class="mt-5 d-flex gap-4">
+                    <div><i class="bi bi-trophy-fill text-pens-gold fs-3"></i> <span class="fw-bold">Akreditasi Unggul</span></div>
+                    <div><i class="bi bi-people-fill text-pens-blue fs-3"></i> <span class="fw-bold">5.000+ Mahasiswa</span></div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <!-- GANTI URL GAMBAR HERO DISINI -->
+                <img src="https://placehold.co/600x400/0a4b7a/ffffff?text=Ganti+dengan+foto+kampus+PENS" alt="Kampus PENS" class="img-fluid rounded-4 shadow-lg" style="border-bottom: 5px solid #ffc107;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= TENTANG KAMPUS SECTION ======================= -->
+<section id="tentang" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-center" style="display: inline-block;">Tentang Kampus</h2>
+            <p class="text-secondary mt-3">Mengenal lebih dekat Politeknik Elektronika Negeri Surabaya (PENS) sebagai pusat keunggulan vokasi</p>
+        </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-md-6">
+                <div class="bg-white p-4 rounded-4 shadow-sm">
+                    <h3 class="text-pens-blue fw-bold"><i class="bi bi-building"></i> Sejarah & Visi</h3>
+                    <p>PENS didirikan pada tahun 1988 sebagai lembaga pendidikan vokasi yang berfokus pada bidang elektronika, telekomunikasi, dan informatika. Dengan semangat <strong class="text-pens-gold">“Teknologi untuk Negeri”</strong>, PENS telah menghasilkan ribuan teknokrat andal yang tersebar di industri nasional dan multinasional.</p>
+                    <p>Visi: Menjadi politeknik unggul di tingkat global dalam pengembangan teknologi terapan yang berkelanjutan dan berjiwa kewirausahaan.</p>
+                    <hr class="my-3">
+                    <div class="row mt-3">
+                        <div class="col-6"><i class="bi bi-calendar-check text-pens-blue"></i> 35+ Tahun Pengalaman</div>
+                        <div class="col-6"><i class="bi bi-globe2 text-pens-blue"></i> 100+ Mitra Industri</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="table-responsive-sm table-custom">
+                    <table class="table table-bordered table-striped mb-0">
+                        <thead class="table-dark">
+                            <tr><th colspan="2" class="bg-pens-blue text-white">Fakta Singkat PENS</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="width: 40%;"><strong>Berdiri</strong></td><td>1988 (SK Mendikbud)</td></tr>
+                            <tr><td><strong>Akreditasi</strong></td><td>Unggul (BAN-PT)</td></tr>
+                            <tr><td><strong>Jumlah Prodi</strong></td><td>10 Program Studi D4 & D3</td></tr>
+                            <tr><td><strong>Kampus</strong></td><td>Surabaya, Jawa Timur</td></tr>
+                            <tr><td><strong>Warna Kampus</strong></td><td><span class="badge bg-primary">Biru</span> + <span class="badge bg-warning text-dark">Kuning</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle bg-white rounded-3 overflow-hidden shadow-sm">
+                            <thead class="bg-pens-gold text-dark">
+                                <tr><th>Prestasi</th><th>Tahun</th><th>Kategori</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>WorldSkills Champions</td><td>2022</td><td>Electronics</td></tr>
+                                <tr><td>Gemastik 1st Winner</td><td>2023</td><td>IoT</td></tr>
+                                <tr><td>Innovation Award IEEE</td><td>2024</td><td>Robotics</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= PROGRAM STUDI ======================= -->
+<section id="program" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-center" style="display: inline-block;">Program Studi</h2>
+            <p class="text-secondary mt-2">Beragam keahlian vokasi terapan di bidang teknik dan teknologi informasi</p>
+        </div>
+        <div class="table-responsive rounded-4 shadow-sm">
+            <table class="table table-bordered table-hover align-middle mb-0 bg-white">
+                <thead class="bg-pens-blue text-white text-center">
+                    <tr><th>Kode</th><th>Program Studi</th><th>Jenjang</th><th>Akreditasi</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>D4-TE</td><td>Teknik Elektronika</td><td>Sarjana Terapan</td><td><span class="badge bg-success">Unggul</span></td></tr>
+                    <tr><td>D4-IT</td><td>Teknik Informatika</td><td>Sarjana Terapan</td><td><span class="badge bg-success">Unggul</span></td></tr>
+                    <tr><td>D4-ME</td><td>Mekatronika</td><td>Sarjana Terapan</td><td><span class="badge bg-success">Unggul</span></td></tr>
+                    <tr><td>D3-ELIN</td><td>Teknik Elektro Industri</td><td>Ahli Madya</td><td><span class="badge bg-primary">Baik Sekali</span></td></tr>
+                    <tr><td>D4-TRM</td><td>Teknik Telekomunikasi</td><td>Sarjana Terapan</td><td><span class="badge bg-success">Unggul</span></td></tr>
+                    <tr><td>D4-BIS</td><td>Sistem Informasi Bisnis</td><td>Sarjana Terapan</td><td><span class="badge bg-primary">Baik Sekali</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-5 row">
+            <div class="col-md-6 mx-auto">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-pens-gold text-dark fw-bold">📊 Program Unggulan (Peminat Tertinggi)</div>
+                    <div class="card-body p-0">
+                        <table class="table table-sm table-striped mb-0">
+                            <thead><tr><th>Program Studi</th><th>Persentase Peminat</th><th>Kuota</th></tr></thead>
+                            <tbody>
+                                <tr><td>Teknik Informatika</td><td>42%</td><td>120 kursi</td></tr>
+                                <tr><td>Mekatronika</td><td>28%</td><td>90 kursi</td></tr>
+                                <tr><td>Teknik Elektronika</td><td>20%</td><td>100 kursi</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= GALERI KAMPUS ======================= -->
+<!-- ======================= =================================== -->
+<!-- ======================= DI SINI ANDA MENGGANTI SEMUA GAMBAR ======================= -->
+<section id="galeri" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-center" style="display: inline-block;">Galeri Kampus</h2>
+            <p class="text-secondary">Suasana belajar, laboratorium canggih, dan kegiatan mahasiswa PENS</p>
+        </div>
+        <div class="row g-4">
+            
+            <!-- 1. LAB ELEKTRONIKA -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR LAB ELEKTRONIKA DISINI -->
+                    <img src="labelektro.png" class="gallery-img" alt="Laboratorium Elektronika">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">Lab. Elektronika Industri</h5>
+                        <p class="card-text small">Fasilitas prototyping IoT & mikrokontroler.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2. STUDENT ACTIVITY -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR STUDENT ACTIVITY DISINI -->
+                    <img src="prestasimahasiswa.png" class="gallery-img" alt="Kegiatan Mahasiswa">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">UKM TARI</h5>
+                        <p class="card-text small">Juara 2 pada Festival Rhapsody Nusantara.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. PERPUSTAKAAN -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR PERPUSTAKAAN DISINI -->
+                    <img src="perpus.png" class="gallery-img" alt="Perpustakaan Digital">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">Library & Co-Working Space</h5>
+                        <p class="card-text small">Area belajar modern dengan akses jurnal internasional.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. ROBOTIK -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR ROBOTIK DISINI -->
+                    <img src="robotik.png" class="gallery-img" alt="Robotik Competition">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">Tim Robot</h5>
+                        <p class="card-text small">Juara 1 Kontes Kapal Indonesia 2k25.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 5. GERBANG PENS -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR GERBANG PENS DISINI -->
+                    <img src="gerbang.png" class="gallery-img" alt="Gerbang Kampus">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">Gerbang Utama</h5>
+                        <p class="card-text small">Kampus dengan lingkungan asri dan modern.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. WISUDA -->
+            <div class="col-md-4 col-sm-6">
+                <div class="card card-gallery h-100">
+                    <!-- GANTI URL GAMBAR WISUDA DISINI -->
+                    <img src="wisuda.png" class="gallery-img" alt="Wisuda PENS">
+                    <div class="card-body">
+                        <h5 class="card-title text-pens-blue">Wisuda & Alumni</h5>
+                        <p class="card-text small">Seremoni wisuda dan jejaring alumni global.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <span class="badge rounded-pill bg-pens-blue px-4 py-2"><i class="bi bi-camera"></i> 10+ Fasilitas Unggulan</span>
+        </div>
+    </div>
+</section>
+
+<!-- ======================= KONTAK & FOOTER ======================= -->
+<section id="kontak" class="py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <h2 class="section-title">Informasi Kontak</h2>
+                <p class="mt-3 text-secondary">Kantor Pusat PENS, kunjungi atau hubungi kami untuk informasi pendaftaran dan kerjasama industri.</p>
+                <div class="mt-4">
+                    <div class="d-flex mb-3"><i class="bi bi-geo-alt-fill contact-icon me-3 text-pens-blue"></i> <div><strong>Alamat Kampus</strong><br>Jl. Raya ITS, Keputih, Sukolilo, Surabaya, Jawa Timur 60111</div></div>
+                    <div class="d-flex mb-3"><i class="bi bi-telephone-fill contact-icon me-3 text-pens-blue"></i> <div><strong>Telepon</strong><br>+62 31 594 7280</div></div>
+                    <div class="d-flex mb-3"><i class="bi bi-envelope-fill contact-icon me-3 text-pens-blue"></i> <div><strong>Email</strong><br>info@pens.ac.id | humas@pens.ac.id</div></div>
+                    <div class="d-flex"><i class="bi bi-clock-fill contact-icon me-3 text-pens-blue"></i> <div><strong>Jam Operasional</strong><br>Senin - Jumat: 07.30 - 16.00 WIB</div></div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-lg rounded-4 p-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-pens-blue">Kirim Pesan Cepat</h4>
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-md-6"><input type="text" class="form-control" placeholder="Nama Lengkap" required></div>
+                                <div class="col-md-6"><input type="email" class="form-control" placeholder="Email Aktif" required></div>
+                            </div>
+                            <div class="mb-3"><input type="text" class="form-control" placeholder="Subjek"></div>
+                            <div class="mb-3"><textarea class="form-control" rows="3" placeholder="Tanyakan tentang pendaftaran, kerjasama, atau program studi..."></textarea></div>
+                            <button type="submit" class="btn btn-pens w-100">Kirim <i class="bi bi-send"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="pt-5 pb-4 mt-4">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5 class="text-white fw-bold"><i class="bi bi-cpu"></i> PENS Surabaya</h5>
+                <p class="small" style="color: #cbd5e1;">Politeknik Elektronika Negeri Surabaya - Kampus Vokasi unggulan berbasis teknologi, siap mencetak lulusan berdaya saing global.</p>
+                <div class="social-icons">
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-instagram"></i>
+                    <i class="bi bi-twitter-x"></i>
+                    <i class="bi bi-youtube"></i>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Tautan Penting</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#tentang" class="text-decoration-none">↳ Tentang PENS</a></li>
+                    <li><a href="#program" class="text-decoration-none">↳ Seluruh Program Studi</a></li>
+                    <li><a href="#galeri" class="text-decoration-none">↳ Galeri Kegiatan</a></li>
+                    <li><a href="#" class="text-decoration-none">↳ PMB PENS 2025</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-white">Kontak & Layanan</h5>
+                <p><i class="bi bi-envelope-paper"></i> Email: info@pens.ac.id<br>
+                <i class="bi bi-headset"></i> Call Center: 0812-3456-7890<br>
+                <i class="bi bi-building"></i> Unit Kerjasama & Humas</p>
+                <div class="mt-2">
+                    <span class="badge bg-warning text-dark">#KampusVokasi</span>
+                    <span class="badge bg-info text-dark ms-1">#BiruKuningPrestasi</span>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 opacity-25">
+        <div class="text-center small">
+            &copy; 2025 Politeknik Elektronika Negeri Surabaya | All Rights Reserved | Tema Biru Kuning Khas PENS
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href').substring(1);
+            if(href === current) {
+                link.classList.add('active');
+            } else if(current === 'home' && link.getAttribute('href') === '#home') {
+                link.classList.add('active');
+            }
+        });
+        if(window.scrollY < 100) document.querySelector('.nav-link[href="#home"]').classList.add('active');
+    });
+</script>
+</body>
+</html>
